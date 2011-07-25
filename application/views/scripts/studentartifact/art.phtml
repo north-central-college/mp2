@@ -1,0 +1,24 @@
+<dl>
+
+<h3>Artifact: <?= $this->singleArtifact->artifact_title; ?></h3>
+
+
+<?php echo "<table id=\"artifact_detail_table\" class =\"student_artifact_table\" 
+cellspacing=\"0\">";?>
+<?php echo "<tr>";
+          echo "<th>Linked Indicator</th>";
+          echo "<th>Time Linked</th>";
+          echo "<th>Current Status</th>";
+          echo "<th>Time Submitted</th>";          
+          echo "<th>Submitted To</th>";
+          echo "<th>Rating Received</th>";
+          echo "<th>Cover Sheet Details</th>";
+          echo "<th>Comments</th>";
+          echo "</tr>";
+        ?>
+
+<dl>
+<?= $this->partialLoop('studentartifact/artRow.phtml', $this->curArt);?>
+
+<?php echo "</table>"; ?>
+</dl>

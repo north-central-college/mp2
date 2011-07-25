@@ -1,0 +1,68 @@
+<dt>
+Indicator: <?= $this->indicator_number; ?> - <?= $this->description; ?>
+</dt>
+<?php echo "<table id=\"indicator_artifact_table\">";?>
+<?php echo "<tr>";
+echo "<th>Artifact Title</th>";
+echo "<th>Course</th>";
+echo "<th>Rating</th>";
+echo "<th>Cover Letter</th>";
+echo "<th>Cover Letter Rating</th>";
+echo "<th>Evaluated By</th>";
+echo "</tr>";?>
+
+<br></br>
+
+
+$i=0;
+
+foreach ($result as $row) 
+{
+	
+	
+
+	
+
+	
+echo "<tr><td>";
+echo $result[$i]['artifact_title'];
+echo "</td>";
+echo "<td>";
+echo $result[$i]['course_number'];
+echo "</td>";
+echo "<td>";
+	if($result[$i]['arc'] != NULL)
+	{
+	$rsr = $this->db->select()
+	->from('rating', 'description')
+	->where('rating_code = ?', $result[$i]['arc']);
+	$ar_res = $this->db->fetchRow($rsr);
+	echo $ar_res['description'];
+	}
+echo "</td>";
+echo "<td>";
+echo $result[$i]['filename'];
+echo "</td>";
+echo "<td>";
+	if($result[$i]['rating_code'] != NULL)
+	{
+	$ar = $this->db->select()
+	->from('rating', 'description')
+	->where('rating_code = ?', $result[$i]['rating_code']);
+	$ref_res = $this->db->fetchRow($ar);
+	echo $ref_res['description'];
+	}	
+echo "</td>";
+echo "<td>";
+echo $result[$i]['first_name'];
+echo " ";
+echo $result[$i]['last_name'];
+echo "</td></tr>";
+$i++;
+}
+echo "</table>";
+if(!$result){
+	echo "No artifacts linked to this indicator.<br />";
+}
+?>
+<br></br>
