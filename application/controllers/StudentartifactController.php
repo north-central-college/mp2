@@ -16,12 +16,12 @@ class StudentartifactController extends Zend_Controller_Action
 		
     	$sessionNamespace = new Zend_Session_Namespace();
    		$this->view->userInfo = array('userID' => $sessionNamespace->userID,
-   									  'role' => $sessionNamespace->userRole,
-  	 								  'last_name' => $sessionNamespace->userLName, 
-        							  'first_name' => $sessionNamespace->userFName,
+   						'role' => $sessionNamespace->userRole,
+  	 					'last_name' => $sessionNamespace->userLName, 
+        					'first_name' => $sessionNamespace->userFName,
                                 );
         // Create the Artifacts table
-		$rowset = $this->studentService->GetAllArtifacts($sessionNamespace->userID);        
+	$rowset = $this->studentService->GetAllArtifacts($sessionNamespace->userID);        
         $this->view->artifactinfo = $rowset;
     }
     
